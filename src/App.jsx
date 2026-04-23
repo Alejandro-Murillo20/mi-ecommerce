@@ -1,25 +1,27 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/organisms/Navbar';
+import Footer from './components/organisms/Footer'; // 1. Importar Footer
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-
-// 1. AQUÍ AGREGAMOS LA IMPORTACIÓN (Línea nueva)
 import ProductDetail from './pages/ProductDetail'; 
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
+      <div className="flex flex-col min-h-screen"> {/* Asegura que el footer se quede abajo */}
+        <Navbar />
         
-        {/* 2. AQUÍ AGREGAMOS LA RUTA DINÁMICA (Línea nueva) */}
-        {/* El ':id' significa que esa parte de la URL cambiará según el producto */}
-        <Route path="/product/:id" element={<ProductDetail />} />
-        
-      </Routes>
+        <main className="flex-grow"> {/* Esto empuja al footer hacia abajo si hay poco contenido */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+          </Routes>
+        </main>
+
+        <Footer /> {/* 2. Añadir Footer aquí */}
+      </div>
     </Router>
   );
 }
