@@ -1,7 +1,10 @@
 // src/components/organisms/Navbar.jsx
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { useCartStore } from '../../store/useCartStore'; // Importamos el almacén del carrito
-
+<Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+  <h2>Mi E-Commerce</h2>
+</Link>
 const Navbar = () => {
   // Extraemos la lista de productos del carrito desde el Store
   const cart = useCartStore((state) => state.cart);
@@ -20,16 +23,9 @@ const Navbar = () => {
       
       <div style={{ fontSize: '1.2rem' }}>
         🛒 Carrito: 
-        <span style={{
-          backgroundColor: '#ff4757',
-          borderRadius: '50%',
-          padding: '2px 8px',
-          marginLeft: '8px',
-          fontWeight: 'bold'
-        }}>
-          {/* Mostramos el número total de elementos en la lista cart */}
-          {cart.length}
-        </span>
+        <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
+  🛒 Carrito: <span>{cart.length}</span>
+</Link>
       </div>
     </nav>
   );
