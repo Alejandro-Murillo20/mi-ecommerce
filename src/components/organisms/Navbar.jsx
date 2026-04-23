@@ -20,9 +20,12 @@ const Navbar = () => {
       marginBottom: '20px'
     }}>
       <h2>Mi E-Commerce</h2>
+
+      <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+        <h2 style={{ margin: 0 }}>Mi E-Commerce</h2>
+      </Link>
       
-      <div style={{ fontSize: '1.2rem' }}>
-        🛒 Carrito: 
+      <div style={{ fontSize: '1.2rem' }}> 
         <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
   🛒 Carrito: <span>{cart.length}</span>
 </Link>
