@@ -19,7 +19,6 @@ const Navbar = () => {
       color: 'white',
       marginBottom: '20px'
     }}>
-      <h2>Mi E-Commerce</h2>
 
       <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
         <h2 style={{ margin: 0 }}>Mi E-Commerce</h2>
