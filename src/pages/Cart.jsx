@@ -1,36 +1,13 @@
 // src/pages/Cart.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useCartStore } from '../store/useCartStore';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // 1. Importamos useNavigate
 
 const Cart = () => {
   const { cart, clearCart, removeFromCart } = useCartStore();
-  const [compraFinalizada, setCompraFinalizada] = useState(false); // Estado para el mensaje de éxito
+  const navigate = useNavigate(); // 2. Definimos la constante para navegar
 
   const total = cart.reduce((acc, item) => acc + item.price, 0);
-
-  // Función para procesar el pago
-  const manejarPago = () => {
-    if (cart.length > 0) {
-      clearCart(); // Vaciamos el carrito
-      setCompraFinalizada(true); // Mostramos el mensaje de éxito
-    }
-  };
-
-  // Si la compra se finalizó, mostramos el mensaje de éxito
-  if (compraFinalizada) {
-    return (
-      <div className="max-w-4xl mx-auto p-20 text-center">
-        <div className="bg-green-100 p-10 rounded-2xl border border-green-200">
-          <h2 className="text-4xl font-bold text-green-700 mb-4">¡Gracias por tu compra!</h2>
-          <p className="text-green-600 mb-8 text-lg">Tu pedido ha sido procesado con éxito y llegará pronto.</p>
-          <Link to="/" className="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition">
-            Volver a la tienda
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -70,11 +47,13 @@ const Cart = () => {
               >
                 Vaciar
               </button>
+              
+              {/* 3. El botón ahora usa navigate para ir al Checkout */}
               <button 
-                onClick={manejarPago}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-md font-bold transition shadow-lg shadow-green-100"
+                onClick={() => navigate('/checkout')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-md font-bold transition shadow-lg shadow-blue-100"
               >
-                Finalizar Compra
+                Pagar ahora
               </button>
             </div>
           </div>

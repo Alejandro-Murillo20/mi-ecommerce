@@ -5,6 +5,7 @@ import Footer from './components/organisms/Footer'; // 1. Importar Footer
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import ProductDetail from './pages/ProductDetail'; 
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </main>
 
