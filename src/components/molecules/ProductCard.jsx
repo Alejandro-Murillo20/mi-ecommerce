@@ -1,34 +1,41 @@
 import React from 'react';
-import { useCartStore } from '../../store/useCartStore'; // Importamos el carrito que creamos antes
+import { Link } from 'react-router-dom'; // 1. Importamos Link
+import { useCartStore } from '../../store/useCartStore';
 
 const ProductCard = ({ product }) => {
-  // Traemos la función para agregar al carrito desde nuestro Store
   const addToCart = useCartStore((state) => state.addToCart);
 
   return (
-    <div style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '8px', margin: '10px', width: '200px' }}>
-      <img 
-  src={product.image} 
-  alt={product.title} 
-  style={{ 
-    width: '100%', 
-    height: '150px', // Altura fija para que todas se vean iguales
-    objectFit: 'cover', // Recorta la imagen para que rellene el cuadro sin deformarse
-    borderRadius: '4px' 
-  }} 
-/>
-      <h3>{product.title}</h3>
-      <p>{product.description}</p>
-      <p><strong>${product.price}</strong></p>
+    <div className="bg-white shadow-lg rounded-lg p-4 m-4 w-64 transform transition duration-300 hover:scale-105 border border-gray-100">
       
-      <button 
-        onClick={() => addToCart(product)}
-        style={{ backgroundColor: '#007bff', color: 'white', border: 'none', padding: '10px', cursor: 'pointer', borderRadius: '4px' }}
-      >
-        Agregar al carrito
-      </button>
+      {/* 2. Envolvemos la imagen y el título con Link */}
+      <Link to={`/product/${product.id}`} className="block">
+        <img 
+          src={product.image} 
+          alt={product.title} 
+          className="w-full h-40 object-cover rounded-md cursor-pointer" 
+        />
+        <h3 className="text-xl font-bold mt-2 text-gray-800 hover:text-blue-600 transition cursor-pointer h-7 overflow-hidden">
+          {product.title}
+        </h3>
+      </Link>
+
+      <p className="text-gray-600 text-sm h-12 overflow-hidden mt-1">
+        {product.description}
+      </p>
+
+      <div className="flex justify-between items-center mt-4">
+        <span className="text-green-600 font-bold text-lg">${product.price}</span>
+        <button 
+          onClick={() => addToCart(product)}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium transition"
+        >
+          Agregar
+        </button>
+      </div>
     </div>
   );
 };
 
 export default ProductCard;
+
