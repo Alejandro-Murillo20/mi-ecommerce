@@ -7,30 +7,35 @@ export const products = [
     price: 799.99,
     description: "Un potente teléfono con cámara de alta resolución.",
     category: "electronica",
-    image: "https://placeholder.com"
+    // Imagen real de un teléfono
+    image: "https://unsplash.com"
   },
   {
     id: 2,
-    title: "Audífonos Noise Cancelling",
+    title: "Audífonos Pro",
     price: 199.50,
     description: "Bloquea el ruido exterior con la mejor tecnología.",
     category: "audio",
-    image: "https://placeholder.com"
+    // Imagen real de audífonos
+    image: "https://unsplash.com"
   },
   {
     id: 3,
-    title: "Reloj Inteligente Sport",
+    title: "Reloj Inteligente",
     price: 120.00,
     description: "Monitorea tu salud y actividad física diaria.",
     category: "accesorios",
-    image: "https://placeholder.com"
+    // Imagen real de un reloj
+    image: "https://unsplash.com"
   },
   {
     id: 4,
-    title: "Laptop Ultra Slim",
+    title: "Laptop Gamer",
     price: 1200.00,
-    description: "Ligera, potente y perfecta para el trabajo remoto.",
+    description: "Ligera, potente y perfecta para jugar o trabajar.",
     category: "computacion",
-    image: "https://placeholder.com"
+    // Imagen real de una laptop
+    image: "https://unsplash.com"
   }
 ];
+
