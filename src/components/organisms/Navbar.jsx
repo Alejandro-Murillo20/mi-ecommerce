@@ -1,34 +1,25 @@
-// src/components/organisms/Navbar.jsx
-import { Link } from 'react-router-dom';
 import React from 'react';
-import { useCartStore } from '../../store/useCartStore'; // Importamos el almacén del carrito
-<Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-  <h2>Mi E-Commerce</h2>
-</Link>
+import { Link } from 'react-router-dom';
+import { useCartStore } from '../../store/useCartStore';
+
 const Navbar = () => {
-  // Extraemos la lista de productos del carrito desde el Store
   const cart = useCartStore((state) => state.cart);
 
   return (
-    <nav style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '10px 40px',
-      backgroundColor: '#222',
-      color: 'white',
-      marginBottom: '20px'
-    }}>
-
-      <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-        <h2 style={{ margin: 0 }}>Mi E-Commerce</h2>
+    <nav className="bg-gray-900 text-white py-4 px-8 flex justify-between items-center shadow-md mb-8">
+      <Link to="/" className="text-2xl font-bold tracking-tight hover:text-blue-400 transition">
+        Mi E-Commerce
       </Link>
       
-      <div style={{ fontSize: '1.2rem' }}> 
-        <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
-  🛒 Carrito: <span>{cart.length}</span>
-</Link>
-      </div>
+      <Link to="/cart" className="relative flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-full hover:bg-gray-700 transition">
+        <span className="text-lg">🛒</span>
+        <span className="font-medium">Carrito</span>
+        {cart.length > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+            {cart.length}
+          </span>
+        )}
+      </Link>
     </nav>
   );
 };
